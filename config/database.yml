@@ -1,0 +1,7 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: ajaxtodos
+  host: localhost
+  pool: 5
+  username: davidaaron

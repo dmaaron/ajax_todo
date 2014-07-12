@@ -1,0 +1,35 @@
+.task-table-container
+  %h1 Priorities!
+  = form_for @priority do |f|
+    = f.label :name
+    = f.text_field :name
+
+    = f.label :urgency_index
+    = f.number_field :urgency_index
+
+    = f.label :color
+    %input#priority_color{type: 'color', name: 'priority[color]'}
+
+    = f.submit id: 'submit'
+
+.task-table-container
+  %table
+    %thead
+      %tr
+        %th Name:
+        %th Priority:
+        %th Color:
+    %tbody#priorities-container
+      - @priorities.each do |t|
+        %tr{:class => t.color}
+          %td
+            = t.name
+          %td
+            = t.urgency_index
+          %td{:style => "background-color:" + t.color }
+
+
+
+
+
+= javascript_include_tag'priorities'

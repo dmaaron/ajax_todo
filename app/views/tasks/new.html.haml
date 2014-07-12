@@ -1,0 +1,36 @@
+#task-id-holder.hidden
+.task-table-container
+  %h1 To Do's:
+  = form_for @task do |f|
+    = f.label :name
+    = f.text_field :name
+    = f.label :desc
+    = f.text_field :desc
+    = f.label :duedate
+    = f.text_field :duedate
+    = f.label :priority_id
+    = f.collection_select :priority_id, @priorities, :id, :name
+    = f.submit id: 'submit', class: 'button'
+    = f.submit id: 'edit-submit', class: 'button hidden alert radius', value: 'Update Task'
+
+.task-table-container
+  %table#tasks-container
+    %thead
+      %tr
+        %th.change-priorities
+        %th.name-link 
+          = link_to 'Name', '#'
+        %th.desc-link 
+          = link_to 'Description', '#'
+        %th.duedate-link
+          = link_to 'Due Date', '#'
+        %th.priority-link
+          = link_to 'Priority', '#'
+        %th.options 
+          = link_to 'Options', '#'
+    %tbody
+      = render partial: 'tasks/partials/tasks'
+
+
+
+= javascript_include_tag'tasks'
